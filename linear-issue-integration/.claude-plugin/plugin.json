@@ -1,0 +1,8 @@
+{
+  "name": "linear-issue-integration",
+  "version": "1.0.0",
+  "description": "Find Linear issues and fix them autonomously in isolated worktrees",
+  "author": {
+    "name": "pambrose"
+  }
+}
