@@ -27,17 +27,23 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 
 ## Installation
 
-Add the marketplace:
+1. Add the marketplace (one-time setup):
 
-```bash
-/plugin marketplace add pambrose/pambrose-claude-plugins
-```
+    ```bash
+    /plugin marketplace add pambrose/pambrose-claude-plugins
+    ```
 
-Install a plugin:
+2. Install the plugin you want:
 
-```bash
-/plugin install linear-issue-integration@pambrose-plugins
-```
+    ```bash
+    /plugin install linear-issue-integration@pambrose-plugins
+    ```
+
+3. To update plugins after new changes are pushed:
+
+    ```bash
+    /plugin marketplace update pambrose-plugins
+    ```
 
 ## Adding a New Plugin
 
