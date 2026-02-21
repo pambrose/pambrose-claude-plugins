@@ -2,29 +2,6 @@
 
 Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin marketplace.
 
-## Plugins
-
-| Plugin                                                | Description                                                                                  |
-|-------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees and run systematic codebase reviews |
-
-### linear-issue-integration
-
-**Command:**
-
-- `/fix-linear-issue` — Find a Linear issue by ID or search text and fix it autonomously in an isolated worktree
-
-**Skills:**
-
-- `create-linear-bug-issues` — Review the codebase for bugs and file findings as Linear issues
-- `create-linear-design-issues` — Review the codebase for design/architecture problems and file findings as Linear
-  issues
-- `create-linear-idiom-issues` — Review the codebase for non-idiomatic language usage and file findings as Linear issues
-
-**Agent:**
-
-- `issue-fixer` — Autonomous agent that implements fixes, runs verification, commits, and updates Linear
-
 ## Installation
 
 1. Add the marketplace (one-time setup):
@@ -45,40 +22,91 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
     /plugin marketplace update pambrose-plugins
     ```
 
-## Adding a New Plugin
+## Plugins
 
-1. Create a directory at the repo root:
+| Plugin                                                | Description                                                                                  |
+|-------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees and run systematic codebase reviews |
 
-    ```
-    my-plugin/
-    ├── .claude-plugin/
-    │   └── plugin.json
-    ├── commands/       # Slash commands (.md files)
-    ├── agents/         # Subagent definitions (.md files)
-    ├── skills/         # Auto-activating skills (subdirs with SKILL.md)
-    └── hooks/          # Event handlers (hooks.json)
-    ```
+---
 
-2. At minimum, `plugin.json` needs:
+### linear-issue-integration
 
-    ```json
-    {
-      "name": "my-plugin"
-    }
-    ```
+Integrates Claude Code with [Linear](https://linear.app) for autonomous issue fixing and systematic codebase reviews
+that file findings directly as Linear issues.
 
-3. Add an entry to `.claude-plugin/marketplace.json`:
+**Requires:** Linear MCP integration configured in Claude Code.
 
-    ```json
-    {
-      "name": "my-plugin",
-      "source": "./my-plugin",
-      "description": "What the plugin does"
-    }
-    ```
+#### Command: `/fix-linear-issue`
 
-4. Push to GitHub and update the marketplace:
+Find a Linear issue and fix it autonomously in an isolated worktree.
 
-    ```bash
-    /plugin marketplace update pambrose-plugins
-    ```
+```
+/fix-linear-issue EO-42
+/fix-linear-issue login timeout bug
+```
+
+**What it does:**
+
+1. Looks up the issue by ID or searches Linear by text
+2. Shows the issue details and asks for confirmation
+3. Sets the Linear issue status to "In Progress"
+4. Spawns the `issue-fixer` agent in an isolated git worktree
+5. After the agent finishes, presents options to merge, create a PR, or clean up
+
+#### Agent: `issue-fixer`
+
+Autonomous agent that runs in an isolated git worktree to fix a single Linear issue. Spawned by
+the `/fix-linear-issue` command — not invoked directly.
+
+**What it does:**
+
+1. Records the worktree branch name
+2. Reads and analyzes the issue
+3. Explores the codebase (CLAUDE.md, relevant files)
+4. Implements the fix with minimal, focused changes
+5. Auto-detects the build system (Gradle, npm, Cargo, Go, Python, Make) and runs tests and lint
+6. Asks whether to commit, commit and push, or skip
+7. Posts a summary comment on the Linear issue (files changed, root cause, test results, branch name)
+
+#### Skill: `create-linear-bug-issues`
+
+Reviews the codebase for functional bugs and files each finding as a Linear issue.
+
+**Trigger phrases:** "find bugs", "review for bugs", "find logic errors", "check for race conditions", "find resource
+leaks", "audit error handling"
+
+**What it looks for:** logic errors, race conditions, resource leaks, null safety issues, error handling gaps, incorrect
+state management.
+
+#### Skill: `create-linear-design-issues`
+
+Reviews the codebase for design and architecture problems and files each finding as a Linear issue.
+
+**Trigger phrases:** "review design", "find design problems", "check architecture", "find tight coupling", "find god
+classes", "audit separation of concerns"
+
+**What it looks for:** poor separation of concerns, tight coupling, missing abstractions, god classes, inappropriate
+responsibility assignment, poor error propagation, concurrency model issues.
+
+#### Skill: `create-linear-idiom-issues`
+
+Reviews the codebase for non-idiomatic language usage and files each finding as a Linear issue. Automatically detects
+the project language — not limited to any specific language.
+
+**Trigger phrases:** "check for non-idiomatic code", "review idioms", "find non-idiomatic patterns", "find unidiomatic
+code"
+
+**What it looks for:** code written in the style of a different language, missing use of language-specific features,
+imperative code that could be functional/declarative, verbose patterns where concise alternatives exist, underuse of
+the type system, mutable state where immutable is idiomatic.
+
+#### How the review skills work
+
+All three review skills follow the same workflow:
+
+1. **Gather Linear context** — fetch teams, projects, and users; ask which to use
+2. **Ensure the label exists** — creates `bug`, `design`, or `non-idiomatic` if missing
+3. **Dispatch a code explorer agent** for deep codebase analysis
+4. **Present findings** in a summary table for review
+5. **File approved findings** as Linear issues with structured descriptions, code snippets, and suggested fixes
