@@ -37,6 +37,14 @@ that file findings directly as Linear issues.
 
 **Requires:** Linear MCP integration configured in Claude Code.
 
+#### Command: `/linear-plugin-version`
+
+Show the installed version of the linear-issue-integration plugin.
+
+```
+/linear-plugin-version
+```
+
 #### Command: `/show-linear-issues`
 
 Display all outstanding Linear issues for a selected project, sorted by priority.
