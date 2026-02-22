@@ -6,33 +6,42 @@ description: Display all outstanding Linear issues sorted by priority
 
 Display all outstanding Linear issues for a selected project, sorted by priority.
 
-## Step 1: Get Project List
+## Step 1: Get Project and Status Info
 
-Fetch available projects using `mcp__claude_ai_Linear__list_projects`.
+Fetch the following in parallel:
+- Available projects using `mcp__claude_ai_Linear__list_projects`
+- Available teams using `mcp__claude_ai_Linear__list_teams`
 
 ## Step 2: Ask Which Project
 
 Use `AskUserQuestion` to ask the user: "Which project?" with the list of project names as options.
 
-## Step 3: Fetch Issues
+## Step 3: Look Up the "Todo" State
 
-**CRITICAL:** You MUST pass these exact parameters to `mcp__claude_ai_Linear__list_issues`:
+Use `mcp__claude_ai_Linear__list_issue_statuses` with the relevant team to get all available statuses.
+Find the status whose name is "Todo" and note its exact name and ID.
+
+## Step 4: Fetch Issues
+
+Use `mcp__claude_ai_Linear__list_issues` with these parameters:
 
 ```json
 {
   "project": "<selected project name>",
-  "state": "Todo",
+  "state": "<exact Todo state name or ID from step 3>",
   "includeArchived": false,
   "limit": 50
 }
 ```
 
-Do NOT omit the `state` parameter. Do NOT set `limit` higher than 50. Omitting `state` will fetch all issues
-including completed ones and cause a token overflow error.
+Do NOT set `limit` higher than 50 to avoid token overflow errors.
 
 If the response includes a cursor, fetch additional pages until all Todo issues are retrieved.
 
-## Step 4: Display Results
+**After fetching:** As a safety check, discard any issues whose status is not "Todo". Only keep issues where the
+state name exactly matches "Todo".
+
+## Step 5: Display Results
 
 Sort the issues by priority (1 = Urgent first, then 2 = High, 3 = Medium, 4 = Low, 0 = No priority last).
 
@@ -51,4 +60,4 @@ Use the priority labels:
 - 4 = Low
 - 0 = No priority
 
-If there are no open issues, tell the user: "No outstanding issues for [project name]."
+If there are no Todo issues, tell the user: "No outstanding issues for [project name]."
