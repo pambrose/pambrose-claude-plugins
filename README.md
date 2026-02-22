@@ -37,6 +37,20 @@ that file findings directly as Linear issues.
 
 **Requires:** Linear MCP integration configured in Claude Code.
 
+#### Command: `/show-linear-issues`
+
+Display all outstanding Linear issues for a selected project, sorted by priority.
+
+```
+/show-linear-issues
+```
+
+**What it does:**
+
+1. Fetches the list of Linear projects
+2. Asks which project to view
+3. Displays all open issues in a table sorted by priority (Urgent, High, Medium, Low), showing title and assignee
+
 #### Command: `/fix-linear-issue`
 
 Find a Linear issue and fix it autonomously in an isolated worktree.
