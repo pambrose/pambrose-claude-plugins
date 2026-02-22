@@ -23,35 +23,38 @@ Find the status whose name is "Todo" and note its exact name and ID.
 
 ## Step 4: Fetch Issues
 
-Use `mcp__claude_ai_Linear__list_issues` with these parameters:
+Fetch issues in small batches to avoid context overflow. Use `limit: 10`:
 
 ```json
 {
   "project": "<selected project name>",
   "state": "<exact Todo state name or ID from step 3>",
   "includeArchived": false,
-  "limit": 50
+  "limit": 10
 }
 ```
 
-Do NOT set `limit` higher than 50 to avoid token overflow errors.
+From each batch, immediately extract ONLY these fields per issue and discard everything else (especially
+the `description` field, which is very large):
+- `identifier` (e.g., "EO-42")
+- `title`
+- `priority.name` (e.g., "High")
+- `assignee` (e.g., "Alice" or null)
 
-If the response includes a cursor, fetch additional pages until all Todo issues are retrieved.
-
-**After fetching:** As a safety check, discard any issues whose status is not "Todo". Only keep issues where the
-state name exactly matches "Todo".
+Store the extracted data, then fetch the next page using the `cursor` if `hasNextPage` is true. Repeat until
+all pages are fetched.
 
 ## Step 5: Display Results
 
-Sort the issues by priority (1 = Urgent first, then 2 = High, 3 = Medium, 4 = Low, 0 = No priority last).
+Sort the collected issues by priority (1 = Urgent first, then 2 = High, 3 = Medium, 4 = Low, 0 = No priority last).
 
 Present the results as a markdown table:
 
-| Priority | Title | Assignee |
-|----------|-------|----------|
-| Urgent | Fix login timeout | Alice |
-| High | Add retry logic | Bob |
-| Medium | Refactor auth module | Unassigned |
+| ID | Priority | Title | Assignee |
+|----|----------|-------|----------|
+| EO-42 | Urgent | Fix login timeout | Alice |
+| EO-43 | High | Add retry logic | Bob |
+| EO-44 | Medium | Refactor auth module | Unassigned |
 
 Use the priority labels:
 - 1 = Urgent
