@@ -51,6 +51,21 @@ Display all outstanding Linear issues for a selected project, sorted by priority
 2. Asks which project to view
 3. Displays all "Todo" issues in a table sorted by priority (Urgent, High, Medium, Low), showing title and assignee
 
+#### Command: `/cancel-linear-issue`
+
+Cancel one or more Linear issues by setting their status to Cancelled.
+
+```
+/cancel-linear-issue EO-42
+/cancel-linear-issue EO-42 EO-43 EO-44
+```
+
+**What it does:**
+
+1. Parses issue IDs from the input
+2. Asks for confirmation before cancelling
+3. Sets each issue's status to "Cancelled" and reports results
+
 #### Command: `/fix-linear-issue`
 
 Find a Linear issue and fix it autonomously in an isolated worktree.
