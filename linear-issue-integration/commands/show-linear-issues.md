@@ -16,8 +16,10 @@ Use `AskUserQuestion` to ask the user: "Which project?" with the list of project
 
 ## Step 3: Fetch Issues
 
-Use `mcp__claude_ai_Linear__list_issues` to fetch issues for the selected project. Filter to only issues with a
-status of "Todo". Exclude all issues with status "Done", "Cancelled", or "In Progress".
+Use `mcp__claude_ai_Linear__list_issues` with the `project` and `state: "Todo"` parameters to fetch only Todo issues.
+Set `includeArchived: false` and use the default limit of 50.
+
+If the response includes a cursor, fetch additional pages until all Todo issues are retrieved.
 
 ## Step 4: Display Results
 
