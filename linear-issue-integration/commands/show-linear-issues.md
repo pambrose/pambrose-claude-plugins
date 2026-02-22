@@ -16,8 +16,19 @@ Use `AskUserQuestion` to ask the user: "Which project?" with the list of project
 
 ## Step 3: Fetch Issues
 
-Use `mcp__claude_ai_Linear__list_issues` with the `project` and `state: "Todo"` parameters to fetch only Todo issues.
-Set `includeArchived: false` and use the default limit of 50.
+**CRITICAL:** You MUST pass these exact parameters to `mcp__claude_ai_Linear__list_issues`:
+
+```json
+{
+  "project": "<selected project name>",
+  "state": "Todo",
+  "includeArchived": false,
+  "limit": 50
+}
+```
+
+Do NOT omit the `state` parameter. Do NOT set `limit` higher than 50. Omitting `state` will fetch all issues
+including completed ones and cause a token overflow error.
 
 If the response includes a cursor, fetch additional pages until all Todo issues are retrieved.
 
