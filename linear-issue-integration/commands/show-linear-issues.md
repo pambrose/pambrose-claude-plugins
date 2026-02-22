@@ -40,6 +40,7 @@ the `description` field, which is very large):
 - `title`
 - `priority.name` (e.g., "High")
 - `assignee` (e.g., "Alice" or null)
+- `labels` (array of label names, but exclude the "AI" label from the list)
 
 Store the extracted data, then fetch the next page using the `cursor` if `hasNextPage` is true. Repeat until
 all pages are fetched.
@@ -50,11 +51,11 @@ Sort the collected issues by priority (1 = Urgent first, then 2 = High, 3 = Medi
 
 Present the results as a markdown table:
 
-| ID | Priority | Title | Assignee |
-|----|----------|-------|----------|
-| EO-42 | Urgent | Fix login timeout | Alice |
-| EO-43 | High | Add retry logic | Bob |
-| EO-44 | Medium | Refactor auth module | Unassigned |
+| ID | Priority | Title | Labels | Assignee |
+|----|----------|-------|--------|----------|
+| EO-42 | Urgent | Fix login timeout | Bug | Alice |
+| EO-43 | High | Add retry logic | Bug, Design | Bob |
+| EO-44 | Medium | Refactor auth module | Non-Idiom | Unassigned |
 
 Use the priority labels:
 - 1 = Urgent
