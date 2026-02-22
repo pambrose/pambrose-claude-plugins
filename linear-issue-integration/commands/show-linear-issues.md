@@ -16,8 +16,8 @@ Use `AskUserQuestion` to ask the user: "Which project?" with the list of project
 
 ## Step 3: Fetch Issues
 
-Use `mcp__claude_ai_Linear__list_issues` to fetch all open issues for the selected project. Filter to only issues that
-are not completed or cancelled.
+Use `mcp__claude_ai_Linear__list_issues` to fetch issues for the selected project. Filter to only issues with a
+status of "Todo". Exclude all issues with status "Done", "Cancelled", or "In Progress".
 
 ## Step 4: Display Results
 

@@ -49,7 +49,7 @@ Display all outstanding Linear issues for a selected project, sorted by priority
 
 1. Fetches the list of Linear projects
 2. Asks which project to view
-3. Displays all open issues in a table sorted by priority (Urgent, High, Medium, Low), showing title and assignee
+3. Displays all "Todo" issues in a table sorted by priority (Urgent, High, Medium, Low), showing title and assignee
 
 #### Command: `/fix-linear-issue`
 
