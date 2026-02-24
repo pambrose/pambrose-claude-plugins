@@ -10,8 +10,8 @@
     {
       "name": "linear-issue-integration",
       "source": "./linear-issue-integration",
-      "description": "Linear integration: fix issues autonomously in worktrees and run systematic codebase reviews",
-      "version": "1.4.0",
+      "description": "Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews",
+      "version": "1.5.0",
       "author": {
         "name": "pambrose"
       }

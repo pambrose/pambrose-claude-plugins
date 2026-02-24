@@ -26,15 +26,15 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 
 | Plugin                                                | Description                                                                                  |
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees and run systematic codebase reviews |
+| [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews |
 | [ide-integration](ide-integration/)                   | Open IDEs and apps from Claude Code                                                          |
 
 ---
 
 ### linear-issue-integration
 
-Integrates Claude Code with [Linear](https://linear.app) for autonomous issue fixing and systematic codebase reviews
-that file findings directly as Linear issues.
+Integrates Claude Code with [Linear](https://linear.app) for autonomous issue fixing, Codex CLI reviews, and systematic
+codebase reviews that file findings directly as Linear issues.
 
 **Requires:** Linear MCP integration configured in Claude Code.
 
