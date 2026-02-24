@@ -174,3 +174,13 @@ Open Cursor editor with the current directory as the project root.
 ```
 
 Also responds to: "open cursor"
+
+#### Command: `/ghostty`
+
+Open Ghostty terminal.
+
+```
+/ghostty
+```
+
+Also responds to: "open ghostty"
