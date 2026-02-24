@@ -1,5 +1,5 @@
 {
-  "name": "ide-integrations",
+  "name": "ide-integration",
   "version": "1.0.0",
   "description": "Open IDEs from Claude Code",
   "author": {

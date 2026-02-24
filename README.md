@@ -27,7 +27,7 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 | Plugin                                                | Description                                                                                  |
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees and run systematic codebase reviews |
-| [ide-integrations](ide-integrations/)                 | Open IDEs from Claude Code                                                                   |
+| [ide-integration](ide-integration/)                   | Open IDEs and apps from Claude Code                                                          |
 
 ---
 
@@ -151,46 +151,33 @@ All three review skills follow the same workflow:
 
 ---
 
-### ide-integrations
+### ide-integration
 
-Open IDEs directly from Claude Code.
+Open IDEs, terminals, and apps directly from Claude Code.
 
-#### Command: `/intellij`
+#### Editors
 
-Open IntelliJ IDEA with the current directory as the project root.
+| Command    | Application         | Also responds to                 |
+|------------|---------------------|----------------------------------|
+| `/intellij`| IntelliJ IDEA       | "open ij", "open in intellij"   |
+| `/pycharm` | PyCharm             | "open pycharm"                  |
+| `/clion`   | CLion               | "open clion"                    |
+| `/rustrover`| RustRover           | "open rustrover"                |
+| `/datagrip`| DataGrip            | "open datagrip"                 |
+| `/cursor`  | Cursor              | "open cursor"                   |
+| `/vscode`  | Visual Studio Code  | "open vscode", "open vs code"  |
+| `/zed`     | Zed                 | "open zed"                      |
 
-```
-/intellij
-```
+#### Terminals
 
-Also responds to: "open ij", "open in intellij"
+| Command     | Application | Also responds to  |
+|-------------|-------------|--------------------|
+| `/ghostty`  | Ghostty     | "open ghostty"    |
+| `/warp`     | Warp        | "open warp"       |
+| `/terminal` | Terminal    | "open terminal"   |
 
-#### Command: `/cursor`
+#### Utilities
 
-Open Cursor editor with the current directory as the project root.
-
-```
-/cursor
-```
-
-Also responds to: "open cursor"
-
-#### Command: `/ghostty`
-
-Open Ghostty terminal.
-
-```
-/ghostty
-```
-
-Also responds to: "open ghostty"
-
-#### Command: `/finder`
-
-Open macOS Finder to the current directory.
-
-```
-/finder
-```
-
-Also responds to: "open finder"
+| Command   | Application  | Also responds to  |
+|-----------|--------------|--------------------|
+| `/finder` | macOS Finder | "open finder"     |

@@ -17,8 +17,8 @@
       }
     },
     {
-      "name": "ide-integrations",
-      "source": "./ide-integrations",
+      "name": "ide-integration",
+      "source": "./ide-integration",
       "description": "Open IDEs from Claude Code",
       "version": "1.0.0",
       "author": {
