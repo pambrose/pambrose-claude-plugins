@@ -27,6 +27,7 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 | Plugin                                                | Description                                                                                  |
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees and run systematic codebase reviews |
+| [ide-integrations](ide-integrations/)                 | Open IDEs from Claude Code                                                                   |
 
 ---
 
@@ -147,3 +148,19 @@ All three review skills follow the same workflow:
 3. **Dispatch a code explorer agent** for deep codebase analysis
 4. **Present findings** in a summary table for review
 5. **File approved findings** as Linear issues with structured descriptions, code snippets, and suggested fixes
+
+---
+
+### ide-integrations
+
+Open IDEs directly from Claude Code.
+
+#### Command: `/intellij`
+
+Open IntelliJ IDEA with the current directory as the project root.
+
+```
+/intellij
+```
+
+Also responds to: "open ij", "open in intellij"
