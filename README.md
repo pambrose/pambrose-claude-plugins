@@ -92,6 +92,26 @@ Find a Linear issue and fix it autonomously in an isolated worktree.
 4. Spawns the `issue-fixer` agent in an isolated git worktree
 5. After the agent finishes, presents options to merge, create a PR, or clean up
 
+#### Command: `/codex-review`
+
+Ask Codex CLI (OpenAI's coding assistant) to independently review a Linear issue and post its feedback as a comment.
+
+```
+/codex-review EO-42
+/codex-review login timeout bug
+```
+
+**Requires:** [Codex CLI](https://github.com/openai/codex) installed (`npm install -g @openai/codex`).
+
+**What it does:**
+
+1. Validates that Codex CLI is installed
+2. Looks up the issue by ID or searches Linear by text
+3. Shows the issue details and asks for confirmation
+4. Runs Codex in read-only sandbox mode to analyze the codebase against the issue
+5. Displays the review for your approval
+6. Posts the review as a comment on the Linear issue
+
 #### Agent: `issue-fixer`
 
 Autonomous agent that runs in an isolated git worktree to fix a single Linear issue. Spawned by
