@@ -167,6 +167,7 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | `/cursor`  | Cursor              | "open cursor"                   |
 | `/vscode`  | Visual Studio Code  | "open vscode", "open vsc"      |
 | `/zed`     | Zed                 | "open zed"                      |
+| `/codex`   | Codex               | "open codex"                    |
 
 #### Terminals
 
