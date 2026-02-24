@@ -164,3 +164,13 @@ Open IntelliJ IDEA with the current directory as the project root.
 ```
 
 Also responds to: "open ij", "open in intellij"
+
+#### Command: `/cursor`
+
+Open Cursor editor with the current directory as the project root.
+
+```
+/cursor
+```
+
+Also responds to: "open cursor"
