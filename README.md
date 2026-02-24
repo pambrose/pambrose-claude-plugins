@@ -168,6 +168,7 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | `/vscode`  | Visual Studio Code  | "open vscode", "open vsc"      |
 | `/zed`     | Zed                 | "open zed"                      |
 | `/codex`   | Codex               | "open codex"                    |
+| `/claude`  | Claude              | "open claude", "open cc"        |
 
 #### Terminals
 
