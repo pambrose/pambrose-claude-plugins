@@ -1,5 +1,5 @@
 ---
-description: Open Ghostty terminal. Responds to "open ghostty".
+description: Open Ghostty terminal. Responds to "open ghostty", "open tty".
 ---
 
 # Open Ghostty

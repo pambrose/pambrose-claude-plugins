@@ -1,5 +1,5 @@
 ---
-description: Open PyCharm with the current directory as the project root. Responds to "open pycharm".
+description: Open PyCharm with the current directory as the project root. Responds to "open pycharm", "open pc".
 ---
 
 # Open PyCharm

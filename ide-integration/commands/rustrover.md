@@ -1,5 +1,5 @@
 ---
-description: Open RustRover with the current directory as the project root. Responds to "open rustrover".
+description: Open RustRover with the current directory as the project root. Responds to "open rustrover", "open rr".
 ---
 
 # Open RustRover

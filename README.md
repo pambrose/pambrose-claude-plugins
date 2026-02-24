@@ -160,19 +160,19 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | Command    | Application         | Also responds to                 |
 |------------|---------------------|----------------------------------|
 | `/intellij`| IntelliJ IDEA       | "open ij", "open in intellij"   |
-| `/pycharm` | PyCharm             | "open pycharm"                  |
+| `/pycharm` | PyCharm             | "open pycharm", "open pc"      |
 | `/clion`   | CLion               | "open clion"                    |
-| `/rustrover`| RustRover           | "open rustrover"                |
-| `/datagrip`| DataGrip            | "open datagrip"                 |
+| `/rustrover`| RustRover           | "open rustrover", "open rr"    |
+| `/datagrip`| DataGrip            | "open datagrip", "open dg"     |
 | `/cursor`  | Cursor              | "open cursor"                   |
-| `/vscode`  | Visual Studio Code  | "open vscode", "open vs code"  |
+| `/vscode`  | Visual Studio Code  | "open vscode", "open vsc"      |
 | `/zed`     | Zed                 | "open zed"                      |
 
 #### Terminals
 
 | Command     | Application | Also responds to  |
 |-------------|-------------|--------------------|
-| `/ghostty`  | Ghostty     | "open ghostty"    |
+| `/ghostty`  | Ghostty     | "open ghostty", "open tty"  |
 | `/warp`     | Warp        | "open warp"       |
 | `/terminal` | Terminal    | "open terminal"   |
 

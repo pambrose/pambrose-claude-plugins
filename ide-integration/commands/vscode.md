@@ -1,5 +1,5 @@
 ---
-description: Open Visual Studio Code with the current directory as the project root. Responds to "open vscode", "open vs code".
+description: Open Visual Studio Code with the current directory as the project root. Responds to "open vscode", "open vs code", "open vsc".
 ---
 
 # Open VS Code

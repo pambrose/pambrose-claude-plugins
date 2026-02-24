@@ -1,5 +1,5 @@
 ---
-description: Open DataGrip with the current directory as the project root. Responds to "open datagrip".
+description: Open DataGrip with the current directory as the project root. Responds to "open datagrip", "open dg".
 ---
 
 # Open DataGrip
