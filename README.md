@@ -184,3 +184,13 @@ Open Ghostty terminal.
 ```
 
 Also responds to: "open ghostty"
+
+#### Command: `/finder`
+
+Open macOS Finder to the current directory.
+
+```
+/finder
+```
+
+Also responds to: "open finder"
