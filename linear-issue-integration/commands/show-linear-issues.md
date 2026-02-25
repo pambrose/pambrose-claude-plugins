@@ -6,19 +6,28 @@ description: Display all outstanding Linear issues sorted by priority
 
 Display all outstanding Linear issues for a selected project, sorted by priority.
 
-## Step 1: Get Project and Status Info
+## Step 1: Get Teams and Projects
 
 Fetch the following in parallel:
-- Available projects using `mcp__claude_ai_Linear__list_projects`
 - Available teams using `mcp__claude_ai_Linear__list_teams`
+- Available projects using `mcp__claude_ai_Linear__list_projects`
 
-## Step 2: Ask Which Project
+## Step 2: Ask Which Team and Project
 
-Use `AskUserQuestion` to ask the user: "Which project?" with the list of project names as options.
+Use a single `AskUserQuestion` call to ask both questions:
+
+- **Team**: "Which team?" with the list of team names as options. If only one team exists, auto-select it and skip
+  this question.
+- **Project**: "Which project?" with the list of project names as options. If only one project exists, auto-select it
+  and skip this question.
+
+**Important**: `AskUserQuestion` requires at least 2 options per question. If a question would have only 1 option,
+auto-select that option and omit it from the call. If all questions can be auto-selected, skip the call entirely and
+inform the user of the auto-selected values.
 
 ## Step 3: Look Up the "Todo" State
 
-Use `mcp__claude_ai_Linear__list_issue_statuses` with the relevant team to get all available statuses.
+Use `mcp__claude_ai_Linear__list_issue_statuses` with the selected team to get all available statuses.
 Find the status whose name is "Todo" and note its exact name and ID.
 
 ## Step 4: Fetch Issues

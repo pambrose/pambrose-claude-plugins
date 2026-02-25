@@ -56,8 +56,8 @@ Display all outstanding Linear issues for a selected project, sorted by priority
 
 **What it does:**
 
-1. Fetches the list of Linear projects
-2. Asks which project to view
+1. Fetches available teams and projects
+2. Asks which team and project to view
 3. Displays all "Todo" issues in a table sorted by priority (Urgent, High, Medium, Low), showing title and assignee
 
 #### Command: `/cancel-linear-issue`
@@ -86,7 +86,7 @@ Find a Linear issue and fix it autonomously in an isolated worktree.
 
 **What it does:**
 
-1. Looks up the issue by ID or searches Linear by text
+1. Looks up the issue by ID, or asks which team/project to search and finds matching issues
 2. Shows the issue details and asks for confirmation
 3. Sets the Linear issue status to "In Progress"
 4. Spawns the `issue-fixer` agent in an isolated git worktree
@@ -106,7 +106,7 @@ Ask Codex CLI (OpenAI's coding assistant) to independently review a Linear issue
 **What it does:**
 
 1. Validates that Codex CLI is installed
-2. Looks up the issue by ID or searches Linear by text
+2. Looks up the issue by ID, or asks which team/project to search and finds matching issues
 3. Shows the issue details and asks for confirmation
 4. Runs Codex in read-only sandbox mode to analyze the codebase against the issue
 5. Displays the review for your approval

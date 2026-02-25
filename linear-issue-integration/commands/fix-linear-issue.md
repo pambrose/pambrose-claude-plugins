@@ -13,9 +13,18 @@ Determine if the input is an issue ID or search text:
 
 - **Issue ID pattern** (matches `[A-Z]+-\d+`, e.g. `EO-42`): Use `mcp__claude_ai_Linear__get_issue` to fetch the issue
   directly by its identifier.
-- **Search text** (anything else): Use `mcp__claude_ai_Linear__search_issues` to find issues matching the text. If
-  multiple results, present them to the user via `AskUserQuestion` and ask which one to fix. If no results, tell the
-  user and stop.
+- **Search text** (anything else): First, ask the user which team and project to search within:
+    1. Fetch teams and projects in parallel using `mcp__claude_ai_Linear__list_teams` and
+       `mcp__claude_ai_Linear__list_projects`.
+    2. Use a single `AskUserQuestion` call to ask:
+        - **Team**: "Which team?" (list all teams). If only one team exists, auto-select it and skip this question.
+        - **Project**: "Which project?" (list all projects). If only one project exists, auto-select it and skip this
+          question.
+    3. Search for issues matching the text, scoped to the selected team/project. If multiple results, present them to
+       the user via `AskUserQuestion` and ask which one to fix. If no results, tell the user and stop.
+
+  **Important**: `AskUserQuestion` requires at least 2 options per question. If a question would have only 1 option,
+  auto-select that option and omit it from the call.
 
 ## Step 2: Confirm with User
 
