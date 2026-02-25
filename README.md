@@ -203,3 +203,5 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | Command   | Application  | Also responds to  |
 |-----------|--------------|--------------------|
 | `/finder` | macOS Finder | "open finder"     |
+| `/open-github` | GitHub (browser) | "open github", "open gh" |
+| `/open-gitlab` | GitLab (browser) | "open gitlab", "open gl" |

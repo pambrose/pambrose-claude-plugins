@@ -20,7 +20,7 @@
       "name": "ide-integration",
       "source": "./ide-integration",
       "description": "Open IDEs from Claude Code",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "author": {
         "name": "pambrose"
       }
