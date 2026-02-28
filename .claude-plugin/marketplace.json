@@ -24,6 +24,15 @@
       "author": {
         "name": "pambrose"
       }
+    },
+    {
+      "name": "osx-integration",
+      "source": "./osx-integration",
+      "description": "macOS system integration commands for Claude Code",
+      "version": "0.2.0",
+      "author": {
+        "name": "pambrose"
+      }
     }
   ]
 }

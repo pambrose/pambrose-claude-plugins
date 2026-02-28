@@ -28,6 +28,7 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews |
 | [ide-integration](ide-integration/)                   | Open IDEs and apps from Claude Code                                                          |
+| [osx-integration](osx-integration/)                   | macOS system integration commands for Claude Code                                            |
 
 ---
 
@@ -205,3 +206,35 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | `/finder` | macOS Finder | "open finder"     |
 | `/open-github` | GitHub (browser) | "open github", "open gh" |
 | `/open-gitlab` | GitLab (browser) | "open gitlab", "open gl" |
+
+---
+
+### osx-integration
+
+macOS system integration — clipboard, notifications, text-to-speech, screenshots, and phone dialing.
+
+#### Commands
+
+| Command | Description |
+|---------|-------------|
+| `/clipboard` | Read from or write to the macOS clipboard |
+| `/notify` | Send a macOS desktop notification |
+| `/say` | Speak text aloud using macOS text-to-speech |
+| `/screenshot` | Take a screenshot |
+
+#### Skill: `dial`
+
+Look up a contact in macOS Contacts and initiate a phone call via Continuity/FaceTime.
+
+**Trigger phrases:** "dial", "call", "phone", "ring", "contact"
+
+```
+/dial Dr. Smith
+call mom
+```
+
+**What it does:**
+
+1. Searches macOS Contacts by name (fuzzy matching)
+2. If multiple contacts or numbers match, asks you to choose
+3. Initiates the call via `open "tel:..."` (hands off to iPhone via Continuity or FaceTime)
