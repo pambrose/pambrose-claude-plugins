@@ -218,23 +218,7 @@ macOS system integration — clipboard, notifications, text-to-speech, screensho
 | Command | Description |
 |---------|-------------|
 | `/clipboard` | Read from or write to the macOS clipboard |
+| `/dial` | Look up a contact in macOS Contacts and dial via Continuity/FaceTime |
 | `/notify` | Send a macOS desktop notification |
 | `/say` | Speak text aloud using macOS text-to-speech |
 | `/screenshot` | Take a screenshot |
-
-#### Skill: `dial`
-
-Look up a contact in macOS Contacts and initiate a phone call via Continuity/FaceTime.
-
-**Trigger phrases:** "dial", "call", "phone", "ring", "contact"
-
-```
-/dial Dr. Smith
-call mom
-```
-
-**What it does:**
-
-1. Searches macOS Contacts by name (fuzzy matching)
-2. If multiple contacts or numbers match, asks you to choose
-3. Initiates the call via `open "tel:..."` (hands off to iPhone via Continuity or FaceTime)

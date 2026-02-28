@@ -1,27 +1,20 @@
 ---
-name: dial
-description: >
-  This skill should be used when the user asks to "dial", "call", "phone",
-  "ring", or "contact" someone by name. Looks up a contact in macOS Contacts
-  and initiates a phone call via the Phone/FaceTime app.
+description: Dial a phone number by looking up a contact in macOS Contacts. Responds to "dial", "call", "phone", "ring", "contact".
+argument-hint: "<name>"
+allowed-tools:
+  - Bash
 ---
 
 # Dial Contact
 
 Look up a contact by name in the macOS Contacts app and initiate a phone call.
 
-## Invocation
-
-Triggered by `/dial <name>` or natural language like "call Dr. Smith" or "dial mom".
-
-## Workflow
-
-### Step 1: Extract the Contact Name
+## Step 1: Extract the Contact Name
 
 Parse the contact name from the user's request. The name may be a first name,
 last name, full name, or nickname.
 
-### Step 2: Search macOS Contacts
+## Step 2: Search macOS Contacts
 
 Run this osascript to search for matching contacts:
 
@@ -47,7 +40,7 @@ end tell
 Replace `<SEARCH_NAME>` with the contact name. The search uses `contains` for
 fuzzy matching (e.g., "smith" matches "John Smith").
 
-### Step 3: Parse Results
+## Step 3: Parse Results
 
 The output format is:
 
@@ -70,7 +63,7 @@ Phone label mappings from macOS Contacts:
 | `_$!<HomeFAX>!$_` | Home fax |
 | `_$!<Pager>!$_` | Pager |
 
-### Step 4: Select the Phone Number
+## Step 4: Select the Phone Number
 
 Apply this priority order when choosing which number to dial:
 
@@ -82,7 +75,7 @@ Apply this priority order when choosing which number to dial:
 
 If only one number exists, use it regardless of label.
 
-### Step 5: Handle Ambiguity
+## Step 5: Handle Ambiguity
 
 - **No matches:** Inform the user and suggest checking the spelling or trying a
   different name.
@@ -91,7 +84,7 @@ If only one number exists, use it regardless of label.
 - **Multiple numbers, no Main label:** Present the available numbers with their
   labels and ask the user to choose.
 
-### Step 6: Dial
+## Step 6: Dial
 
 Strip all non-numeric characters except `+` from the phone number, then open
 the Phone app:

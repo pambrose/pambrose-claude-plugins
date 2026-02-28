@@ -2,17 +2,12 @@
 
 macOS system integration commands for Claude Code.
 
-## Skills
-
-| Skill | Description |
-|-------|-------------|
-| `dial` | Look up a contact in macOS Contacts and initiate a phone call |
-
 ## Commands
 
 | Command | Description |
 |---------|-------------|
 | `/clipboard` | Read from or write to the macOS clipboard |
+| `/dial` | Look up a contact in macOS Contacts and initiate a phone call |
 | `/notify` | Send a macOS desktop notification |
 | `/say` | Speak text aloud using macOS text-to-speech |
 | `/screenshot` | Take a screenshot |

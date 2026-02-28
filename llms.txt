@@ -1,0 +1,88 @@
+# pambrose-claude-plugins
+
+> Personal Claude Code plugin marketplace by pambrose.
+
+This repository is a Claude Code plugin marketplace. Each top-level directory is an independent plugin, and `.claude-plugin/marketplace.json` is the marketplace manifest.
+
+## Plugins
+
+### linear-issue-integration (v1.6.0)
+
+Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews.
+
+**Commands:**
+- `/fix-linear-issue` — Fix a Linear issue in an isolated worktree
+- `/show-linear-issues` — Display outstanding Linear issues sorted by priority
+- `/cancel-linear-issue` — Cancel Linear issues by setting status to Cancelled
+- `/codex-review` — Ask Codex CLI to independently review a Linear issue
+- `/linear-plugin-version` — Show installed plugin version
+
+**Skills:**
+- `create-linear-bug-issues` — Review codebase for bugs and create Linear issues
+- `create-linear-design-issues` — Review codebase for design problems and create Linear issues
+- `create-linear-idiom-issues` — Review codebase for non-idiomatic code and create Linear issues
+
+**Agents:**
+- `issue-fixer` — Autonomous agent that fixes Linear issues in isolated worktrees
+
+### ide-integration (v1.5.0)
+
+Open IDEs and tools directly from Claude Code.
+
+**Commands:**
+- `/claude` — Open Claude desktop app
+- `/codex` — Open Codex editor
+- `/cursor` — Open Cursor editor
+- `/vscode` — Open Visual Studio Code
+- `/intellij` — Open IntelliJ IDEA
+- `/pycharm` — Open PyCharm
+- `/clion` — Open CLion
+- `/rustrover` — Open RustRover
+- `/datagrip` — Open DataGrip
+- `/zed` — Open Zed editor
+- `/warp` — Open Warp terminal
+- `/ghostty` — Open Ghostty terminal
+- `/terminal` — Open macOS Terminal
+- `/finder` — Open macOS Finder
+- `/open-github` — Open current repo on GitHub
+- `/open-gitlab` — Open current repo on GitLab
+
+### osx-integration (v0.3.0)
+
+macOS system integration — clipboard, notifications, text-to-speech, screenshots, and phone dialing.
+
+**Commands:**
+- `/clipboard` — Read from or write to the macOS clipboard
+- `/dial` — Look up a contact in macOS Contacts and dial via Continuity/FaceTime
+- `/notify` — Send a macOS desktop notification
+- `/say` — Speak text aloud using macOS text-to-speech
+- `/screenshot` — Take a screenshot
+
+## Structure
+
+```
+pambrose-claude-plugins/
+├── .claude-plugin/
+│   └── marketplace.json
+├── linear-issue-integration/
+│   ├── .claude-plugin/plugin.json
+│   ├── commands/
+│   ├── agents/
+│   └── skills/
+├── ide-integration/
+│   ├── .claude-plugin/plugin.json
+│   └── commands/
+├── osx-integration/
+│   ├── .claude-plugin/plugin.json
+│   └── commands/
+├── CLAUDE.md
+└── llms.txt
+```
+
+## Installation
+
+Install via Claude Code:
+
+```
+claude install-plugin https://github.com/pambrose/pambrose-claude-plugins
+```
