@@ -6,7 +6,7 @@ This repository is a Claude Code plugin marketplace. Each top-level directory is
 
 ## Plugins
 
-### linear-issue-integration (v1.6.0)
+### linear-issue-integration (v1.7.0)
 
 Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews.
 

@@ -1,0 +1,33 @@
+# linear-issue-integration
+
+> Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews.
+
+This is a Claude Code plugin that integrates with Linear for issue management. It uses the Linear MCP server (`mcp__claude_ai_Linear__*` tools) for all API interactions.
+
+## Commands
+
+- `/show-linear-issues` — Display all Linear issues in "Todo" status for a selected project, sorted by priority. Fetches in batches of 10 to avoid context overflow.
+- `/fix-linear-issue <ID or text>` — Find a Linear issue by ID or search text, then spawn an autonomous agent in an isolated git worktree to fix it. Updates issue status to "In Progress" and invokes the `finishing-a-development-branch` skill after completion.
+- `/cancel-linear-issue <IDs>` — Cancel one or more Linear issues by setting their status to Cancelled. Supports multiple IDs in a single invocation. Confirms with user before proceeding.
+- `/codex-review <ID or text>` — Send a Linear issue to Codex CLI for independent code review. Codex runs in read-only sandbox mode. The review is previewed before posting as a Linear comment.
+- `/linear-plugin-version` — Display the installed plugin version from plugin.json.
+
+## Skills
+
+- `create-linear-bug-issues` — Dispatch a subagent to review the codebase for functional bugs (logic errors, race conditions, resource leaks, null safety), then file each finding as a Linear issue with the "bug" label.
+- `create-linear-design-issues` — Dispatch a subagent to review codebase architecture (coupling, missing abstractions, god classes, responsibility assignment), then file each finding as a Linear issue with the "design" label.
+- `create-linear-idiom-issues` — Dispatch a subagent to review for non-idiomatic language usage (language-specific patterns, verbose code, missing standard library usage), then file each finding as a Linear issue with the "non-idiomatic" label.
+
+## Agents
+
+- `issue-fixer` — Autonomous agent that runs in an isolated git worktree. Explores the codebase, implements fixes, runs tests and lint, commits changes, and updates the Linear issue with a summary comment.
+
+## Key MCP Tools Used
+
+- `mcp__claude_ai_Linear__save_issue` — Create or update issues (including status changes)
+- `mcp__claude_ai_Linear__save_comment` — Post comments on issues
+- `mcp__claude_ai_Linear__get_issue` — Fetch issue details by identifier
+- `mcp__claude_ai_Linear__list_teams` / `list_projects` / `list_users` — Fetch team, project, and user data
+- `mcp__claude_ai_Linear__list_issue_statuses` — Get available statuses for a team
+- `mcp__claude_ai_Linear__list_issues` — Search and list issues with filters
+- `mcp__claude_ai_Linear__create_issue_label` — Create labels for issue categorization

@@ -55,7 +55,7 @@ Before building the prompt, gather repo context to pass to Codex:
 - Run `pwd` to get the current working directory
 - Run `git remote get-url origin 2>/dev/null || echo '(no remote)'` to get the repo URL
 - Run `git log --oneline -5` to get recent commit history
-- If a `CLAUDE.md` exists in the repo root, read its first 50 lines for project conventions
+- Check if a `CLAUDE.md` exists in the repo root (`test -f CLAUDE.md`). If it exists, read its first 50 lines for project conventions. If not, skip this step.
 
 Then run:
 
@@ -84,16 +84,16 @@ Your review should include:
 4. **Risk Level** — How risky is this fix? What could go wrong?
 5. **Affected Files** — Which files are involved?
 
-Be concise and specific. Reference actual file paths and code when possible. Sign off with: '— Reviewed by Codex CLI'" 2>/dev/null
+Be concise and specific. Reference actual file paths and code when possible. Sign off with: '— Reviewed by Codex CLI'" 2>&1
 ```
 
 Key flags:
 - `--ephemeral`: one-shot execution, no session persistence
 - `--sandbox read-only`: Codex can read the codebase but cannot modify any files
-- `2>/dev/null`: suppress progress/status output, capture only the final review text
+- `2>&1`: capture both stdout and stderr so errors can be diagnosed
 - Timeout: 300000ms (5 minutes)
 
-If the command fails or times out, tell the user and stop.
+If the command fails or times out, report the error output to the user and stop.
 
 ## Step 5: Preview the Review
 
@@ -111,7 +111,7 @@ If No, stop.
 
 ## Step 7: Post to Linear
 
-Use `mcp__claude_ai_Linear__create_comment` to post a comment on the issue. Format the comment body as:
+Use `mcp__claude_ai_Linear__save_comment` to post a comment on the issue. Format the comment body as:
 
 ```
 ## Codex CLI Review

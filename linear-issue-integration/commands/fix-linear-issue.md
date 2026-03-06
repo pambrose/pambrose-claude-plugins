@@ -20,8 +20,9 @@ Determine if the input is an issue ID or search text:
         - **Team**: "Which team?" (list all teams). If only one team exists, auto-select it and skip this question.
         - **Project**: "Which project?" (list all projects). If only one project exists, auto-select it and skip this
           question.
-    3. Search for issues matching the text, scoped to the selected team/project. If multiple results, present them to
-       the user via `AskUserQuestion` and ask which one to fix. If no results, tell the user and stop.
+    3. Search for issues matching the text, scoped to the selected team/project, with `limit: 10`. If multiple
+       results, present them to the user via `AskUserQuestion` and ask which one to fix. If no results, tell the
+       user and stop.
 
   **Important**: `AskUserQuestion` requires at least 2 options per question. If a question would have only 1 option,
   auto-select that option and omit it from the call.
@@ -41,7 +42,9 @@ If No, stop.
 
 ## Step 3: Update Linear Status
 
-Use `mcp__claude_ai_Linear__update_issue` to move the issue status to "In Progress".
+Use `mcp__claude_ai_Linear__save_issue` to move the issue status to "In Progress".
+
+If the status update fails (e.g., invalid state transition), warn the user but continue with the fix.
 
 ## Step 4: Spawn the Issue Fixer Agent
 
@@ -63,5 +66,8 @@ Work autonomously: explore the codebase, implement the fix, run tests and lint, 
 
 ## Step 5: After Agent Completes
 
-Report the agent's results to the user. Then invoke the `finishing-a-development-branch` skill so the user can choose
-how to integrate the work (merge, PR, or cleanup).
+If the agent failed or encountered errors, report the failure to the user and use `mcp__claude_ai_Linear__save_issue`
+to move the issue status back to "Todo". Then stop.
+
+If the agent succeeded, report the results to the user. Then invoke the `finishing-a-development-branch` skill so the
+user can choose how to integrate the work (merge, PR, or cleanup).

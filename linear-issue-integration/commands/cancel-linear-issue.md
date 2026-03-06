@@ -23,7 +23,7 @@ If No, stop.
 
 ## Step 3: Cancel Issues
 
-For each issue ID, use `mcp__claude_ai_Linear__update_issue` with `state: "Cancelled"`.
+For each issue ID, use `mcp__claude_ai_Linear__save_issue` with `state: "Cancelled"`.
 
 If any update fails, report the error for that issue and continue with the remaining issues.
 

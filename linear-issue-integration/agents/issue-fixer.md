@@ -87,7 +87,7 @@ git push -u origin [branch-name]
 
 ### 7. Update Linear
 
-Use `mcp__claude_ai_Linear__create_comment` to add a comment on the issue summarizing:
+Use `mcp__claude_ai_Linear__save_comment` to add a comment on the issue summarizing:
 
 - What was changed (files modified)
 - Why (root cause of the issue)

@@ -61,7 +61,7 @@ After the agent completes:
 
 ### Phase 4: File Linear Issues
 
-For each approved finding, create a Linear issue using `mcp__claude_ai_Linear__create_issue` with:
+For each approved finding, create a Linear issue using `mcp__claude_ai_Linear__save_issue` with:
 
 ```
 title: <concise finding title>

@@ -1,10 +1,10 @@
 ---
-description: Display all outstanding Linear issues sorted by priority
+description: Display all Linear issues in "Todo" status sorted by priority
 ---
 
 # Show Issues
 
-Display all outstanding Linear issues for a selected project, sorted by priority.
+Display all Linear issues in "Todo" status for a selected project, sorted by priority.
 
 ## Step 1: Get Teams and Projects
 
@@ -51,8 +51,9 @@ the `description` field, which is very large):
 - `assignee` (e.g., "Alice" or null)
 - `labels` (array of label names, but exclude the "AI" label from the list)
 
-Store the extracted data, then fetch the next page using the `cursor` if `hasNextPage` is true. Repeat until
-all pages are fetched.
+Store the extracted data, then fetch the next page using the `cursor` if `hasNextPage` is true. When fetching
+multiple pages, inform the user of progress (e.g., "Fetched 20 issues so far..."). Repeat until all pages
+are fetched.
 
 ## Step 5: Display Results
 
@@ -73,4 +74,4 @@ Use the priority labels:
 - 4 = Low
 - 0 = No priority
 
-If there are no Todo issues, tell the user: "No outstanding issues for [project name]."
+If there are no Todo issues, tell the user: "No Todo issues for [project name]."
