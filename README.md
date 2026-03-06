@@ -14,6 +14,8 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 
     ```bash
     /plugin install linear-issue-integration@pambrose-plugins
+    /plugin install ide-integration@pambrose-plugins
+    /plugin install osx-integration@pambrose-plugins
     ```
 
 3. To update plugins after new changes are pushed:
