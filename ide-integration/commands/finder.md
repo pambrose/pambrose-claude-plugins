@@ -13,3 +13,5 @@ open .
 ```
 
 After running, confirm to the user: "Opened Finder in [current directory]."
+
+If the command fails, tell the user that Finder could not be opened and suggest they verify the current directory exists and is accessible.

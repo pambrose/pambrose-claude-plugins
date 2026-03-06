@@ -1,0 +1,32 @@
+# ide-integration
+
+> Open IDEs, editors, terminals, and tools directly from Claude Code on macOS.
+
+This is a Claude Code plugin that provides slash commands for launching applications from within Claude Code. All commands use macOS `open -a` as the primary launch method with CLI fallbacks where available.
+
+## Commands
+
+- `/intellij` — Open IntelliJ IDEA (fallback: `idea .`)
+- `/pycharm` — Open PyCharm (fallback: `charm .`)
+- `/clion` — Open CLion (fallback: `clion .`)
+- `/rustrover` — Open RustRover (fallback: `rustrover .`)
+- `/datagrip` — Open DataGrip (fallback: `datagrip .`)
+- `/vscode` — Open Visual Studio Code (fallback: `code .`)
+- `/cursor` — Open Cursor (fallback: `cursor .`)
+- `/zed` — Open Zed (fallback: `zed .`)
+- `/codex` — Open Codex (fallback: `codex .`)
+- `/ghostty` — Open Ghostty terminal
+- `/warp` — Open Warp terminal
+- `/terminal` — Open macOS Terminal
+- `/claude` — Open Claude desktop app
+- `/finder` — Open macOS Finder to current directory
+- `/open-github` — Open current repo on GitHub (requires `gh` CLI)
+- `/open-gitlab` — Open current repo on GitLab (requires `glab` CLI)
+
+## Fallback Strategy
+
+IDE and editor commands use a two-step approach:
+1. Try `open -a "AppName" .` (works for GUI-installed apps)
+2. If that fails, try the CLI launcher (works for package-manager installs)
+
+Terminal and standalone app commands use `open -a` only, as they typically lack CLI equivalents for this purpose.

@@ -25,7 +25,7 @@ Find Linear issues, fix them autonomously in isolated worktrees, and request Cod
 **Agents:**
 - `issue-fixer` — Autonomous agent that fixes Linear issues in isolated worktrees
 
-### ide-integration (v1.5.0)
+### ide-integration (v1.6.0)
 
 Open IDEs and tools directly from Claude Code.
 

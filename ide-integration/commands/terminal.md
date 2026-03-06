@@ -1,5 +1,5 @@
 ---
-description: Open macOS Terminal. Responds to "open terminal".
+description: Open macOS Terminal. Responds to "open terminal", "open term".
 ---
 
 # Open Terminal

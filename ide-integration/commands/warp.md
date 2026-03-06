@@ -1,5 +1,5 @@
 ---
-description: Open Warp terminal. Responds to "open warp".
+description: Open Warp terminal. Responds to "open warp", "open w".
 ---
 
 # Open Warp
