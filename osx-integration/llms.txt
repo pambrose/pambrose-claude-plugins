@@ -1,0 +1,24 @@
+# osx-integration
+
+> macOS system integration commands for Claude Code.
+
+This is a Claude Code plugin that provides slash commands for interacting with macOS system features. All commands use `allowed-tools: [Bash]` to constrain execution to shell commands only.
+
+## Commands
+
+- `/clipboard [text]` — Read from or write to the macOS clipboard. If text is provided, copies it using `pbcopy` via heredoc. If no text, reads clipboard with `pbpaste`. Also responds to "copy", "paste".
+- `/notify <message> [--title] [--subtitle] [--sound]` — Send a macOS desktop notification using `osascript`. Defaults title to "Claude Code". Available sounds: Basso, Blow, Bottle, Frog, Funk, Glass, Hero, Morse, Ping, Pop, Purr, Sosumi, Submarine, Tink.
+- `/say <text> [--voice] [--rate]` — Speak text aloud using the macOS `say` command. Supports voice selection and speech rate (words per minute). Run `say -v '?'` to list available voices. Blocks until speech completes.
+- `/screenshot [filename] [--window] [--selection] [--clipboard] [--delay]` — Take a screenshot using `screencapture`. Supports full screen, window selection (`-w`), region selection (`-s`), clipboard capture (`-c`), and delayed capture (`-T`). Requires Screen Recording permission.
+- `/dial <name>` — Look up a contact by name in macOS Contacts via AppleScript, select a phone number by priority (Main > Mobile > iPhone > Home), and dial using `open "tel:..."`. Requires Contacts permission.
+
+## Security
+
+All commands that interpolate user text into shell or AppleScript strings use safe quoting:
+- Bash commands use heredocs (`<<'EOF'`) or single quotes to prevent shell injection
+- AppleScript strings escape `"` and `\` before interpolation
+
+## Permissions
+
+- `/screenshot` requires Screen Recording (System Settings > Privacy & Security > Screen Recording)
+- `/dial` requires Contacts access (System Settings > Privacy & Security > Contacts)

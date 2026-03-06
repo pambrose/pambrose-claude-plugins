@@ -40,6 +40,12 @@ end tell
 Replace `<SEARCH_NAME>` with the contact name. The search uses `contains` for
 fuzzy matching (e.g., "smith" matches "John Smith").
 
+**Important:** Before interpolating the contact name into the AppleScript string, escape all `"` characters as `\"`
+and all `\` characters as `\\` to prevent AppleScript injection.
+
+**Note:** macOS requires Contacts permission for the terminal app running Claude Code. If the command returns no
+results or fails, suggest the user check System Settings > Privacy & Security > Contacts.
+
 ## Step 3: Parse Results
 
 The output format is:

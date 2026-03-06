@@ -26,6 +26,15 @@ osascript -e 'display notification "MESSAGE" with title "TITLE" subtitle "SUBTIT
 - Replace SUBTITLE with the provided subtitle, or omit `subtitle "SUBTITLE"` entirely if not specified
 - Replace SOUND with the provided sound name, or omit `sound name "SOUND"` entirely if not specified
 
+**Important:** Before interpolating any user text into the AppleScript string, escape all `"` characters as `\"` and
+all `\` characters as `\\` to prevent AppleScript injection.
+
+### Available sounds
+
+If the user asks what sounds are available, list these built-in macOS sounds or run `ls /System/Library/Sounds/`:
+
+Basso, Blow, Bottle, Frog, Funk, Glass, Hero, Morse, Ping, Pop, Purr, Sosumi, Submarine, Tink
+
 After running, confirm to the user: "Notification sent."
 
 If the command fails, tell the user that the notification could not be sent.

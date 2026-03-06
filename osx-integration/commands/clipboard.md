@@ -13,11 +13,16 @@ Interact with the macOS system clipboard using `pbcopy` and `pbpaste`.
 
 ### If the user provides text to copy:
 
-Write the provided text to the clipboard using `pbcopy`:
+Write the provided text to the clipboard using `pbcopy` with a heredoc to avoid shell injection:
 
 ```bash
-echo -n "TEXT_HERE" | pbcopy
+pbcopy <<'EOF'
+TEXT_HERE
+EOF
 ```
+
+**Important:** Use a heredoc with single-quoted delimiter (`<<'EOF'`) so that `$`, `` ` ``, `\`, and `"` in the
+user's text are passed through literally without shell interpretation.
 
 After running, confirm to the user: "Copied to clipboard."
 

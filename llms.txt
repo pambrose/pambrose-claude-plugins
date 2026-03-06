@@ -47,7 +47,7 @@ Open IDEs and tools directly from Claude Code.
 - `/open-github` — Open current repo on GitHub
 - `/open-gitlab` — Open current repo on GitLab
 
-### osx-integration (v0.3.0)
+### osx-integration (v0.4.0)
 
 macOS system integration — clipboard, notifications, text-to-speech, screenshots, and phone dialing.
 
