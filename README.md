@@ -49,7 +49,7 @@ Show the installed version of the linear-issue-integration plugin.
 
 #### Command: `/show-linear-issues`
 
-Display all outstanding Linear issues for a selected project, sorted by priority.
+Display all Linear issues in "Todo" status for a selected project, sorted by priority.
 
 ```
 /show-linear-issues
@@ -185,10 +185,10 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | `/clion`   | CLion               | "open clion"                    |
 | `/rustrover`| RustRover           | "open rustrover", "open rr"    |
 | `/datagrip`| DataGrip            | "open datagrip", "open dg"     |
-| `/cursor`  | Cursor              | "open cursor"                   |
+| `/cursor`  | Cursor              | "open cursor", "open cur"       |
 | `/vscode`  | Visual Studio Code  | "open vscode", "open vsc"      |
-| `/zed`     | Zed                 | "open zed"                      |
-| `/codex`   | Codex               | "open codex"                    |
+| `/zed`     | Zed                 | "open zed", "open z"            |
+| `/codex`   | Codex               | "open codex", "open cx"         |
 | `/claude`  | Claude              | "open claude", "open cc"        |
 
 #### Terminals
@@ -196,8 +196,8 @@ Open IDEs, terminals, and apps directly from Claude Code.
 | Command     | Application | Also responds to  |
 |-------------|-------------|--------------------|
 | `/ghostty`  | Ghostty     | "open ghostty", "open tty"  |
-| `/warp`     | Warp        | "open warp"       |
-| `/terminal` | Terminal    | "open terminal"   |
+| `/warp`     | Warp        | "open warp", "open w"       |
+| `/terminal` | Terminal    | "open terminal", "open term"   |
 
 #### Utilities
 

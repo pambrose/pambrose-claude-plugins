@@ -12,7 +12,7 @@ Find Linear issues, fix them autonomously in isolated worktrees, and request Cod
 
 **Commands:**
 - `/fix-linear-issue` — Fix a Linear issue in an isolated worktree
-- `/show-linear-issues` — Display outstanding Linear issues sorted by priority
+- `/show-linear-issues` — Display Linear issues in "Todo" status sorted by priority
 - `/cancel-linear-issue` — Cancel Linear issues by setting status to Cancelled
 - `/codex-review` — Ask Codex CLI to independently review a Linear issue
 - `/linear-plugin-version` — Show installed plugin version
