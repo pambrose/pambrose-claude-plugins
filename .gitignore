@@ -7,6 +7,9 @@
 *.iml
 *.ipr
 
+.superset
+.DS_Store
+
 # CMake
 cmake-build-*/
 
