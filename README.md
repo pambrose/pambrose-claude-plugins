@@ -41,6 +41,9 @@ codebase reviews that file findings directly as Linear issues.
 
 **Requires:** Linear MCP integration configured in Claude Code.
 
+> **Warning:** To change Linear Workspaces, you must re-authenticate with the Linear MCP server and select
+> the desired Linear Workspace during the authorization process.
+
 #### Command: `/linear-plugin-version`
 
 Show the installed version of the linear-issue-integration plugin.

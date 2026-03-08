@@ -42,3 +42,6 @@ Find Linear issues, fix them autonomously in isolated worktrees, and request Cod
 - Linear MCP server configured in Claude Code
 - For `/codex-review`: Codex CLI installed (`npm install -g @openai/codex`)
 - For `/fix-linear-issue`: Git (uses worktrees for isolation)
+
+> **Warning:** To change Linear Workspaces, you must re-authenticate with the Linear MCP server and select
+> the desired Linear Workspace during the authorization process.
