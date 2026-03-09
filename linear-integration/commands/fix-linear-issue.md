@@ -48,7 +48,7 @@ If the status update fails (e.g., invalid state transition), warn the user but c
 
 ## Step 4: Spawn the Issue Fixer Agent
 
-Use the `Task` tool with `isolation: "worktree"` and `subagent_type: "linear-issue-integration:issue-fixer"` to spawn
+Use the `Task` tool with `isolation: "worktree"` and `subagent_type: "linear-integration:issue-fixer"` to spawn
 the agent.
 Pass the full issue context in the prompt:
 

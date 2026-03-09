@@ -13,9 +13,9 @@
 ### Task 1: Create the agent — `issue-pr-creator.md`
 
 **Files:**
-- Create: `linear-issue-integration/agents/issue-pr-creator.md`
+- Create: `linear-integration/agents/issue-pr-creator.md`
 
-**Reference:** Model after `linear-issue-integration/agents/issue-fixer.md` but with these key differences:
+**Reference:** Model after `linear-integration/agents/issue-fixer.md` but with these key differences:
 - Creates branch named `fix/<issue-id-lowercase>-<slugified-title>` at start
 - Explicitly creates/updates tests (agent judgment on placement)
 - Invokes `/simplify` skill after verification
@@ -36,9 +36,9 @@
 ### Task 2: Create the command — `fix-and-create-pr-linear-issue.md`
 
 **Files:**
-- Create: `linear-issue-integration/commands/fix-and-create-pr-linear-issue.md`
+- Create: `linear-integration/commands/fix-and-create-pr-linear-issue.md`
 
-**Reference:** Model after `linear-issue-integration/commands/fix-linear-issue.md` but with these key differences:
+**Reference:** Model after `linear-integration/commands/fix-linear-issue.md` but with these key differences:
 - Skip user confirmation if issue status is already "In Progress"
 - Spawn `issue-pr-creator` agent instead of `issue-fixer`
 - On success: update Linear status to "Done", clean up worktree
@@ -55,20 +55,20 @@
 ### Task 3: Update plugin metadata
 
 **Files:**
-- Modify: `linear-issue-integration/.claude-plugin/plugin.json` — bump version to `1.8.0`
-- Modify: `.claude-plugin/marketplace.json` — bump linear-issue-integration version to `1.8.0`
+- Modify: `linear-integration/.claude-plugin/plugin.json` — bump version to `1.8.0`
+- Modify: `.claude-plugin/marketplace.json` — bump linear-integration version to `1.8.0`
 
 **Step 1:** Update both version numbers.
 
-**Commit:** `chore: bump linear-issue-integration to v1.8.0`
+**Commit:** `chore: bump linear-integration to v1.8.0`
 
 ---
 
 ### Task 4: Update README and llms.txt
 
 **Files:**
-- Modify: `linear-issue-integration/README.md` — add command, agent, and usage example
-- Modify: `linear-issue-integration/llms.txt` — add command and agent descriptions
+- Modify: `linear-integration/README.md` — add command, agent, and usage example
+- Modify: `linear-integration/llms.txt` — add command and agent descriptions
 
 **Step 1:** Add `/fix-and-create-pr-linear-issue` to the commands table in README.
 **Step 2:** Add `issue-pr-creator` to the agents table in README.

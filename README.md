@@ -13,7 +13,7 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 2. Install the plugin you want:
 
     ```bash
-    /plugin install linear-issue-integration@pambrose-plugins
+    /plugin install linear-integration@pambrose-plugins
     /plugin install ide-integration@pambrose-plugins
     /plugin install osx-integration@pambrose-plugins
     ```
@@ -28,13 +28,13 @@ Personal [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin ma
 
 | Plugin                                                | Description                                                                                  |
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| [linear-issue-integration](linear-issue-integration/) | Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews |
+| [linear-integration](linear-integration/) | Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews |
 | [ide-integration](ide-integration/)                   | Open IDEs and apps from Claude Code                                                          |
 | [osx-integration](osx-integration/)                   | macOS system integration commands for Claude Code                                            |
 
 ---
 
-### linear-issue-integration
+### linear-integration
 
 Integrates Claude Code with [Linear](https://linear.app) for autonomous issue fixing, Codex CLI reviews, and systematic
 codebase reviews that file findings directly as Linear issues.
@@ -46,7 +46,7 @@ codebase reviews that file findings directly as Linear issues.
 
 #### Command: `/linear-plugin-version`
 
-Show the installed version of the linear-issue-integration plugin.
+Show the installed version of the linear-integration plugin.
 
 ```
 /linear-plugin-version

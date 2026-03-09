@@ -11,7 +11,7 @@ This repo is a Claude Code marketplace. Each top-level directory is an independe
 pambrose-claude-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json   # Marketplace manifest (lists all plugins)
-├── linear-issue-integration/  # Each plugin is a top-level directory
+├── linear-integration/  # Each plugin is a top-level directory
 │   ├── .claude-plugin/
 │   │   └── plugin.json
 │   ├── commands/

@@ -8,8 +8,8 @@
   },
   "plugins": [
     {
-      "name": "linear-issue-integration",
-      "source": "./linear-issue-integration",
+      "name": "linear-integration",
+      "source": "./linear-integration",
       "description": "Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews",
       "version": "1.8.0",
       "author": {

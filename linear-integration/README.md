@@ -1,4 +1,4 @@
-# linear-issue-integration
+# linear-integration
 
 Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews.
 

@@ -6,12 +6,13 @@ This repository is a Claude Code plugin marketplace. Each top-level directory is
 
 ## Plugins
 
-### linear-issue-integration (v1.7.0)
+### linear-integration (v1.8.0)
 
 Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews.
 
 **Commands:**
 - `/fix-linear-issue` — Fix a Linear issue in an isolated worktree
+- `/fix-and-create-pr-linear-issue` — Fix a Linear issue in a worktree, create tests, simplify, commit, and open a GitHub PR
 - `/show-linear-issues` — Display Linear issues in "Todo" status sorted by priority
 - `/cancel-linear-issue` — Cancel Linear issues by setting status to Cancelled
 - `/codex-review` — Ask Codex CLI to independently review a Linear issue
@@ -24,6 +25,7 @@ Find Linear issues, fix them autonomously in isolated worktrees, and request Cod
 
 **Agents:**
 - `issue-fixer` — Autonomous agent that fixes Linear issues in isolated worktrees
+- `issue-pr-creator` — Autonomous agent that fixes issues, creates tests, runs simplify, and opens GitHub PRs
 
 ### ide-integration (v1.6.0)
 
@@ -64,7 +66,7 @@ macOS system integration — clipboard, notifications, text-to-speech, screensho
 pambrose-claude-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json
-├── linear-issue-integration/
+├── linear-integration/
 │   ├── .claude-plugin/plugin.json
 │   ├── commands/
 │   ├── agents/

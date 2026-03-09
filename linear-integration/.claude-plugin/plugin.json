@@ -1,5 +1,5 @@
 {
-  "name": "linear-issue-integration",
+  "name": "linear-integration",
   "version": "1.8.0",
   "description": "Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews",
   "author": {

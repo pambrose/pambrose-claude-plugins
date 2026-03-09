@@ -2,7 +2,7 @@
 
 ## Overview
 
-New command + agent for the linear-issue-integration plugin that finds a Linear issue, fixes it in an isolated worktree, creates tests, runs /simplify, commits, creates a GitHub PR, updates Linear, and cleans up.
+New command + agent for the linear-integration plugin that finds a Linear issue, fixes it in an isolated worktree, creates tests, runs /simplify, commits, creates a GitHub PR, updates Linear, and cleans up.
 
 ## Architecture
 

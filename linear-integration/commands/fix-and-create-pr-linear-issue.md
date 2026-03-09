@@ -61,7 +61,7 @@ If the status update fails for another reason (e.g., invalid state transition), 
 
 ## Step 4: Spawn the Issue PR Creator Agent
 
-Use the `Task` tool with `isolation: "worktree"` and `subagent_type: "linear-issue-integration:issue-pr-creator"` to
+Use the `Task` tool with `isolation: "worktree"` and `subagent_type: "linear-integration:issue-pr-creator"` to
 spawn the agent.
 
 Pass the full issue context in the prompt:
