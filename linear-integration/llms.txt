@@ -8,7 +8,7 @@ This is a Claude Code plugin that integrates with Linear for issue management. I
 
 - `/show-linear-issues` — Display all Linear issues in "Todo" status for a selected project, sorted by priority. Fetches in batches of 10 to avoid context overflow.
 - `/fix-linear-issue <ID or text>` — Find a Linear issue by ID or search text, then spawn an autonomous agent in an isolated git worktree to fix it. Updates issue status to "In Progress" and invokes the `finishing-a-development-branch` skill after completion.
-- `/fix-and-create-pr-linear-issue <ID or text>` — Find a Linear issue, fix it in an isolated worktree, create tests, run /simplify, commit, push, and create a GitHub PR. Updates issue to "Done" on success. Skips user confirmation if issue is already "In Progress" (supports /loop usage). Cleans up the worktree after completion.
+- `/fix-and-create-pr-linear-issue <ID or text>` — Find a Linear issue, fix it in an isolated worktree, create tests, run /simplify, commit, push, and create a GitHub PR. Immediately moves issue to "In Progress" to prevent duplicate processing, then skips confirmation if the issue was "Ready for PR" (supports /loop usage). Updates issue to "Done" on success. Cleans up the worktree after completion.
 - `/cancel-linear-issue <IDs>` — Cancel one or more Linear issues by setting their status to Cancelled. Supports multiple IDs in a single invocation. Confirms with user before proceeding.
 - `/codex-review <ID or text>` — Send a Linear issue to Codex CLI for independent code review. Codex runs in read-only sandbox mode. The review is previewed before posting as a Linear comment.
 - `/linear-plugin-version` — Display the installed plugin version from plugin.json.

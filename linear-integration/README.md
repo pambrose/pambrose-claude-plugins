@@ -48,9 +48,9 @@ Find Linear issues, fix them autonomously in isolated worktrees, and request Cod
 /fix-and-create-pr-linear-issue EO-42
 ```
 
-This finds issue EO-42, confirms with you, then autonomously: creates a `fix/eo-42-fix-login-timeout` branch in a
-worktree, implements the fix, creates tests, runs `/simplify`, commits, pushes, opens a GitHub PR, posts a summary
-and PR link to the Linear issue, and sets the issue to "Done".
+This finds issue EO-42, immediately sets it to "In Progress", confirms with you, then autonomously: creates a
+`fix/eo-42-fix-login-timeout` branch in a worktree, implements the fix, creates tests, runs `/simplify`, commits,
+pushes, opens a GitHub PR, posts a summary and PR link to the Linear issue, and sets the issue to "Done".
 
 **Search for an issue by text:**
 
@@ -62,14 +62,15 @@ This searches for matching issues, lets you pick one, then runs the same autonom
 
 **Batch-process issues with `/loop`:**
 
-First, mark the issues you want processed as "In Progress" in Linear. Then set up a loop:
+First, mark the issues you want processed as "Ready for PR" in Linear. Then set up a loop:
 
 ```
-/loop 5m Run /show-linear-issues and find any issues in "In Progress" status. For each one, run /fix-and-create-pr-linear-issue on it.
+/loop 5m Run /show-linear-issues and find any issues in "Ready for PR" status. For each one, run /fix-and-create-pr-linear-issue on it.
 ```
 
-Issues already in "In Progress" skip the confirmation prompt, so the loop runs fully autonomously — fixing each issue,
-creating PRs, and marking them "Done" without manual intervention.
+Issues in "Ready for PR" are immediately moved to "In Progress" (preventing duplicate processing on the next loop
+tick), skip the confirmation prompt, and run fully autonomously — fixing each issue, creating PRs, and marking them
+"Done" without manual intervention.
 
 ## Requirements
 

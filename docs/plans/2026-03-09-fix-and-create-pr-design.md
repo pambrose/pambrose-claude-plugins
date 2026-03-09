@@ -13,8 +13,8 @@ Two new files:
 ## Command Flow
 
 1. **Find issue** — ID or text search (same pattern as fix-linear-issue)
-2. **Confirm with user** — show issue details, ask Yes/No. **Skip confirmation if issue is already "In Progress"** (supports /loop usage)
-3. **Update Linear status** — move to "In Progress" (idempotent if already there)
+2. **Update Linear status immediately** — move to "In Progress" right away to prevent duplicate processing in loops
+3. **Confirm with user** — show issue details, ask Yes/No. **Skip confirmation if issue was "Ready for PR"** (supports /loop usage). If user declines, revert status.
 4. **Spawn agent** — `issue-pr-creator` with `isolation: "worktree"`, pass full issue context
 5. **On success:** clean up worktree via `git worktree remove`, update Linear status to "Done"
 6. **On failure:** revert Linear status to "Todo", post error comment on the issue, clean up worktree
@@ -42,8 +42,8 @@ Example: `fix/eo-42-fix-login-timeout`
 ## Error Handling
 
 - On failure: keep the branch (preserve work), revert Linear to "Todo", post error to issue comments, clean up worktree
-- Status update to "In Progress" is idempotent for /loop compatibility
+- Status moves to "In Progress" immediately after finding the issue, before confirmation or agent work
 
 ## Loop Compatibility
 
-When used via `/loop`, issues already marked "In Progress" skip the user confirmation step, enabling fully autonomous batch processing.
+The loop looks for issues in "Ready for PR" status. The command immediately moves them to "In Progress" upon finding them, preventing duplicate processing on the next loop tick. Issues that were "Ready for PR" skip the user confirmation step, enabling fully autonomous batch processing.

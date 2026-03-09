@@ -112,8 +112,8 @@ Fix a Linear issue autonomously in a worktree, create tests, simplify the code, 
 **What it does:**
 
 1. Looks up the issue by ID, or asks which team/project to search and finds matching issues
-2. Shows the issue details and asks for confirmation (skipped if already "In Progress")
-3. Sets the Linear issue status to "In Progress"
+2. Immediately sets the Linear issue status to "In Progress" (prevents duplicate processing in loops)
+3. Shows the issue details and asks for confirmation (skipped if issue was "Ready for PR")
 4. Spawns the `issue-pr-creator` agent in an isolated git worktree on a `fix/<id>-<title>` branch
 5. The agent implements the fix, creates tests, runs `/simplify`, commits, pushes, and opens a GitHub PR
 6. Posts a detailed summary and PR link to the Linear issue
@@ -121,13 +121,14 @@ Fix a Linear issue autonomously in a worktree, create tests, simplify the code, 
 
 **Batch processing with `/loop`:**
 
-Mark issues as "In Progress" in Linear, then set up a loop to process them autonomously:
+Mark issues as "Ready for PR" in Linear, then set up a loop to process them autonomously:
 
 ```
-/loop 5m Run /show-linear-issues and find any issues in "In Progress" status. For each one, run /fix-and-create-pr-linear-issue on it.
+/loop 5m Run /show-linear-issues and find any issues in "Ready for PR" status. For each one, run /fix-and-create-pr-linear-issue on it.
 ```
 
-Issues already in "In Progress" skip the confirmation prompt, so the loop runs fully autonomously.
+Issues in "Ready for PR" are immediately moved to "In Progress" (preventing duplicate picks on the next tick), skip
+the confirmation prompt, and run fully autonomously.
 
 #### Command: `/codex-review`
 

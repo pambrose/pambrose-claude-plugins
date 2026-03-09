@@ -27,37 +27,35 @@ Determine if the input is an issue ID or search text:
   **Important**: `AskUserQuestion` requires at least 2 options per question. If a question would have only 1 option,
   auto-select that option and omit it from the call.
 
-## Step 2: Confirm with User (Conditional)
+## Step 2: Update Linear Status to "In Progress"
 
-Check the issue's current status.
-
-Display the issue details regardless of status:
-
-- **ID:** [issue identifier]
-- **Title:** [issue title]
-- **Status:** [current status]
-
-**If the issue is already "In Progress":** Skip confirmation and proceed directly to Step 3. The issue was pre-approved
-for work (this supports autonomous `/loop` usage).
-
-**If the issue is NOT "In Progress":** Also display:
-
-- **ID:** [issue identifier]
-- **Title:** [issue title]
-- **Status:** [current status]
-- **Description:** [issue description, truncated if very long]
-
-Ask the user: "Fix this issue and create a PR?" with options Yes / No.
-
-If No, stop.
-
-## Step 3: Update Linear Status
-
-Use `mcp__claude_ai_Linear__save_issue` to move the issue status to "In Progress".
+**Immediately** use `mcp__claude_ai_Linear__save_issue` to move the issue status to "In Progress". This must happen
+before any confirmation prompt or agent work, so that subsequent `/loop` iterations do not pick up the same issue.
 
 If the issue is already "In Progress", this is a no-op — proceed without error.
 
 If the status update fails for another reason (e.g., invalid state transition), warn the user but continue.
+
+## Step 3: Confirm with User (Conditional)
+
+Check the issue's **previous** status (before the update in Step 2).
+
+Display the issue details regardless of previous status:
+
+- **ID:** [issue identifier]
+- **Title:** [issue title]
+- **Status:** [previous status → In Progress]
+
+**If the issue was "Ready for PR":** Skip confirmation and proceed directly to Step 4. The issue was pre-approved
+for work (this supports autonomous `/loop` usage where the loop looks for "Ready for PR" issues).
+
+**If the issue was in any other status:** Also display:
+
+- **Description:** [issue description, truncated if very long]
+
+Ask the user: "Fix this issue and create a PR?" with options Yes / No.
+
+If No, use `mcp__claude_ai_Linear__save_issue` to revert the issue status back to its previous status, then stop.
 
 ## Step 4: Spawn the Issue PR Creator Agent
 
