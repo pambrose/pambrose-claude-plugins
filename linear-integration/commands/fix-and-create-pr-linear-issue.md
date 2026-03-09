@@ -36,21 +36,12 @@ If the issue is already "In Progress", this is a no-op — proceed without error
 
 If the status update fails for another reason (e.g., invalid state transition), warn the user but continue.
 
-## Step 3: Confirm with User (Conditional)
+## Step 3: Confirm with User
 
-Check the issue's **previous** status (before the update in Step 2).
-
-Display the issue details regardless of previous status:
+Display the issue details:
 
 - **ID:** [issue identifier]
 - **Title:** [issue title]
-- **Status:** [previous status → In Progress]
-
-**If the issue was "Ready for PR":** Skip confirmation and proceed directly to Step 4. The issue was pre-approved
-for work (this supports autonomous `/loop` usage where the loop looks for "Ready for PR" issues).
-
-**If the issue was in any other status:** Also display:
-
 - **Description:** [issue description, truncated if very long]
 
 Ask the user: "Fix this issue and create a PR?" with options Yes / No.
