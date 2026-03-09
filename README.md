@@ -98,6 +98,37 @@ Find a Linear issue and fix it autonomously in an isolated worktree.
 4. Spawns the `issue-fixer` agent in an isolated git worktree
 5. After the agent finishes, presents options to merge, create a PR, or clean up
 
+#### Command: `/fix-and-create-pr-linear-issue`
+
+Fix a Linear issue autonomously in a worktree, create tests, simplify the code, commit, push, and open a GitHub PR.
+
+```
+/fix-and-create-pr-linear-issue EO-42
+/fix-and-create-pr-linear-issue login timeout bug
+```
+
+**Requires:** [GitHub CLI](https://cli.github.com/) installed (`brew install gh`).
+
+**What it does:**
+
+1. Looks up the issue by ID, or asks which team/project to search and finds matching issues
+2. Shows the issue details and asks for confirmation (skipped if already "In Progress")
+3. Sets the Linear issue status to "In Progress"
+4. Spawns the `issue-pr-creator` agent in an isolated git worktree on a `fix/<id>-<title>` branch
+5. The agent implements the fix, creates tests, runs `/simplify`, commits, pushes, and opens a GitHub PR
+6. Posts a detailed summary and PR link to the Linear issue
+7. Sets the issue to "Done" and cleans up the worktree
+
+**Batch processing with `/loop`:**
+
+Mark issues as "In Progress" in Linear, then set up a loop to process them autonomously:
+
+```
+/loop 5m Run /show-linear-issues and find any issues in "In Progress" status. For each one, run /fix-and-create-pr-linear-issue on it.
+```
+
+Issues already in "In Progress" skip the confirmation prompt, so the loop runs fully autonomously.
+
 #### Command: `/codex-review`
 
 Ask Codex CLI (OpenAI's coding assistant) to independently review a Linear issue and post its feedback as a comment.
@@ -132,6 +163,24 @@ the `/fix-linear-issue` command — not invoked directly.
 5. Auto-detects the build system (Gradle, npm, Cargo, Go, Python, Make) and runs tests and lint
 6. Asks whether to commit, commit and push, or skip
 7. Posts a summary comment on the Linear issue (files changed, root cause, test results, branch name)
+
+#### Agent: `issue-pr-creator`
+
+Autonomous agent that runs in an isolated git worktree to fix a Linear issue and create a GitHub PR. Spawned by
+the `/fix-and-create-pr-linear-issue` command — not invoked directly.
+
+**What it does:**
+
+1. Creates a `fix/<issue-id>-<slugified-title>` branch
+2. Reads and analyzes the issue
+3. Explores the codebase (CLAUDE.md, relevant files)
+4. Implements the fix with minimal, focused changes
+5. Creates or updates tests to verify the fix
+6. Auto-detects the build system and runs tests and lint
+7. Runs `/simplify` to review code quality, then re-verifies
+8. Posts a detailed fix summary to the Linear issue
+9. Commits, pushes, and creates a GitHub PR
+10. Posts the PR link to the Linear issue
 
 #### Skill: `create-linear-bug-issues`
 

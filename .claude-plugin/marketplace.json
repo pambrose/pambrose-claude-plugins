@@ -11,7 +11,7 @@
       "name": "linear-issue-integration",
       "source": "./linear-issue-integration",
       "description": "Linear integration: fix issues autonomously in worktrees, request Codex CLI reviews, and run systematic codebase reviews",
-      "version": "1.6.0",
+      "version": "1.8.0",
       "author": {
         "name": "pambrose"
       }
@@ -29,7 +29,7 @@
       "name": "osx-integration",
       "source": "./osx-integration",
       "description": "macOS system integration commands for Claude Code",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "pambrose"
       }
