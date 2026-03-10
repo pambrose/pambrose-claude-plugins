@@ -1,6 +1,6 @@
 # linear-integration
 
-Find Linear issues, fix them autonomously in isolated worktrees, and request Codex CLI reviews.
+Discover codebase issues, triage by priority, review with Codex CLI, fix autonomously in isolated worktrees, create PRs, and cancel issues — all integrated with Linear.
 
 ## Discover Issues
 
@@ -65,6 +65,17 @@ Display all Linear issues in "Todo" status for a selected project, sorted by pri
 /show-linear-issues
 ```
 
+## Review Issues
+
+### Command: `/codex-review`
+
+Ask Codex CLI to independently review a Linear issue and post its feedback as a comment.
+
+```
+/codex-review EO-42              # Review a specific issue by ID
+/codex-review login timeout bug  # Search for an issue by text
+```
+
 ## Fix Issues
 
 ### Command: `/fix-linear-issue`
@@ -108,17 +119,6 @@ Mark issues as "Ready for PR" in Linear, then set up a loop to process them auto
 Issues in "Ready for PR" are immediately moved to "In Progress" (preventing duplicate processing on the next loop
 tick), skip the confirmation prompt, and run fully autonomously — fixing each issue, creating PRs, and marking them
 "Done" without manual intervention.
-
-## Review Issues
-
-### Command: `/codex-review`
-
-Ask Codex CLI to independently review a Linear issue and post its feedback as a comment.
-
-```
-/codex-review EO-42              # Review a specific issue by ID
-/codex-review login timeout bug  # Search for an issue by text
-```
 
 ## Cancel Issues
 
